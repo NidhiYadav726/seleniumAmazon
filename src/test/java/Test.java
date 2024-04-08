@@ -23,9 +23,9 @@ public class Test {
         public static void AmazonLaunching() {
             options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--headless");
+        // options.addArguments("--no-sandbox");
+        // options.addArguments("--disable-dev-shm-usage");
+        // options.addArguments("--headless");
             driver = new ChromeDriver(options);
             driver.get("https://www.amazon.in/");
             driver.manage().window().maximize();
