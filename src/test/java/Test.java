@@ -25,7 +25,7 @@ public class Test {
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
-       driver.manage().window().maximize();
+      // driver.manage().window().maximize();
     }
 
          @org.testng.annotations.Test
