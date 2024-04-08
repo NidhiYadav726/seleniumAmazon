@@ -19,17 +19,30 @@ public class Test {
         public static WebDriver driver;
 
         @BeforeTest
-
-        public static void AmazonLaunching() {
-            options = new ChromeOptions();
-        // options.addArguments("--remote-allow-origins=*");
-        // options.addArguments("--no-sandbox");
-        // options.addArguments("--disable-dev-shm-usage");
+         public static void setup() {
+        options = new ChromeOptions();
         options.addArguments("--headless");
-            driver = new ChromeDriver(options);
-            driver.get("https://www.amazon.in/");
-            driver.manage().window().maximize();
-        }
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
+    }
+
+       //  public static void AmazonLaunching() {
+       //      options = new ChromeOptions();
+       // options.addArguments("--remote-allow-origins=*");
+       //  options.addArguments("--no-sandbox");
+       //  options.addArguments("--disable-dev-shm-usage");
+       //  options.addArguments("--headless");
+       //      driver = new ChromeDriver(options);
+       //      driver.get("https://www.amazon.in/");
+       //      driver.manage().window().maximize();
+       //  }
+         @org.testng.annotations.Test
+        public static void AmazonLaunching() {
+           driver.get("https://www.amazon.in/");
+           Assert.assertTrue(driver.getTitle().contains("Amazon.in"));
+    }
 
         @org.testng.annotations.Test
         public static void Search() {
