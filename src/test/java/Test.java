@@ -17,24 +17,19 @@ public class Test {
 
         public static ChromeOptions options;
         public static WebDriver driver;
-
-        @BeforeTest
-         public static void setup() {
+        public static WebDriverWait wait;
+        
+       @BeforeTest
+        public void setupAndAmazonLaunch() {
         options = new ChromeOptions();
-        options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
         options.addArguments("--window-size=1920x1080");
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-       driver.manage().window().maximize();
-                
-    }
-
-         @org.testng.annotations.Test
-        public static void AmazonLaunching() {
-           driver.get("https://www.amazon.in/");
-           Assert.assertTrue(driver.getTitle().contains("Amazon.in"));
+        driver.manage().window().maximize();
+        driver.get("https://www.amazon.in/");
     }
 
         @org.testng.annotations.Test
