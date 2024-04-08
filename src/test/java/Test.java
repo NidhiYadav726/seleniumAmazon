@@ -15,27 +15,32 @@ import java.util.Set;
 
 public class Test {
 
-        public static ChromeOptions options;
-        public static WebDriver driver;
+    public static WebDriver driver;
+    public static ChromeOptions options;
+    public static WebDriverWait wait;
 
-        @BeforeTest
 
-        public static void AmazonLaunching() {
-            options = new ChromeOptions();
-            options.addArguments("--remote-allow-origins=*");
-            driver = new ChromeDriver(options);
-            driver.get("https://www.amazon.in/");
-            driver.manage().window().maximize();
-        }
+    @BeforeTest
+    public void setupAndAmazonLaunch() {
+        options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
+        options.addArguments("--window-size=1920x1080");
+        driver = new ChromeDriver(options);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        driver.manage().window().maximize();
+        driver.get("https://www.amazon.in/");
+    }
 
-        @org.testng.annotations.Test
-        public static void Search() {
-            WebElement searchbar = driver.findElement(By.xpath("//*[@id=\"twotabsearchtextbox\"]"));
-            searchbar.sendKeys("boat headphone");
-            WebElement searchbutton = driver.findElement(By.xpath("//*[@id=\"nav-search-submit-button\"]"));
-            searchbutton.click();
-            Assert.assertTrue(driver.getTitle().contains("boat headphone"), "yes");
-        }
+    @org.testng.annotations.Test
+    public static void Search() {
+        WebElement searchbar = driver.findElement(By.xpath("//*[@id=\"twotabsearchtextbox\"]"));
+        searchbar.sendKeys("boat headphone");
+        WebElement searchbutton = driver.findElement(By.xpath("//*[@id=\"nav-search-submit-button\"]"));
+        searchbutton.click();
+        Assert.assertTrue(driver.getTitle().contains("boat headphone"), "yes");
+    }
 
 //    @Test
 //    public static void testcolorpatternsforfirstelement() {
