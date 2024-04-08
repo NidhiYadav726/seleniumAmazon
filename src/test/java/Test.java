@@ -20,12 +20,12 @@ public class Test {
 
         @BeforeTest
          public static void setup() {
-        options = new ChromeOptions();
+      ChromeOptions  options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
-      // driver.manage().window().maximize();
+       driver.manage().window().maximize();
     }
 
          @org.testng.annotations.Test
