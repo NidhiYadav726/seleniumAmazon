@@ -33,7 +33,7 @@ jobs:
     #     sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
 
     - name: Run Selenium tests
-      run:   mvn clean test -DargLine="-Dwebdriver.chrome.driver=/usr/bin/chromedriver -Dheadless" 
+      run:   mvn clean test 
     - name: Archive test results
       if: always()
       uses: actions/upload-artifact@v4
