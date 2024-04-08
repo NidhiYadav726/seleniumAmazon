@@ -24,8 +24,10 @@ public class Test {
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--window-size=1920x1080");
         driver = new ChromeDriver(options);
        driver.manage().window().maximize();
+                
     }
 
          @org.testng.annotations.Test
